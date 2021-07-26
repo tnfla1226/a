@@ -30,7 +30,7 @@ section.calTemplete {
     padding: 50px 50px;
 }
 
-section.calTemplete .show {
+#show {
     display: inline-block;
     /* line-height: 2em; */
     border-radius: 10px;
@@ -58,7 +58,6 @@ section.calTemplete .buttons button {
     cursor: pointer;
     color: #fff;
     font-size: 20px;
-
 }
 
 section.calTemplete .buttons .double {
