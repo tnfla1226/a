@@ -1,10 +1,14 @@
 //변수 선언
+// 숫자 저장소
 let val1 = '';
 let val2 = '';
+
+// input 창
 let $show = document.getElementById('show');
 
 
 //함수 정의
+// 숫자 함수
 function addNum(num) {
   $show.value = $show.value + num;
 }
@@ -13,7 +17,7 @@ function addNum(num) {
 
 
 
-
+// 연산 함수
 function calculate(sign) {
   let result = '';
   if (sign === '+') {
@@ -35,7 +39,7 @@ function calculate(sign) {
 
 }
 
-
+// .(점) 함수
 function floatDot(dot) {
   if ($show.hasAttribute('.')) return;
   // console.log(!$show.hasAttribute('+','-','/','*'));
@@ -60,6 +64,7 @@ function floatDot(dot) {
     }
   });
 
+  // 연산 버튼 클릭 이벤트
   $buttons.addEventListener('click', e => {
     if (e.target.matches('.plus') || e.target.matches('.minus') || e.target.matches('.divisor') || e.target.matches('.mul') || e.target.matches('.answer')) {
       calculate(e.target.textContent);
@@ -67,7 +72,7 @@ function floatDot(dot) {
 
   });
 
-  //  .버튼 클릭 이벤트
+  //  .(점)버튼 클릭 이벤트
   $dot.addEventListener('click', e => {
     if (e.target.matches('.dot')) {
       console.log('dot click');
@@ -101,3 +106,4 @@ function floatDot(dot) {
 // 할 것
 // .버튼 클릭 이벤트 ,AC버튼 클릭 이벤트, C버튼 클릭 이벤트 해야함
 // ppt
+
