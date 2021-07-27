@@ -11,10 +11,8 @@ let $show = document.getElementById('show');
 // 숫자 함수
 function addNum(num) {
   $show.value = $show.value + num;
+  $show.setAttribute('value', $show.value);
 }
-
-
-
 
 
 // 연산 함수
@@ -32,7 +30,7 @@ function calculate(sign) {
     // answer = (new Function ('return '+$show.value))(); 
     result = eval($show.value); // : 수정코드
 
-    $show.value = result
+    $show.value = result;
     $show.setAttribute('value', result);
 
   }
@@ -41,11 +39,21 @@ function calculate(sign) {
 
 // .(점) 함수
 function floatDot(dot) {
-  if ($show.hasAttribute('.')) return;
-  // console.log(!$show.hasAttribute('+','-','/','*'));
-  $show.value = $show.value + dot;
-  $show.setAttribute('Dot', dot);
+  if($show.getAttribute('value')) {
+    $show.dot = $show.value + '.'
+   } 
+  
 }
+
+// AC 함수
+function allClear() {
+  $show.value = '';
+  $show.setAttribute('value', '0');
+}
+
+
+
+
 
 
 
@@ -54,6 +62,8 @@ function floatDot(dot) {
   const $buttons = document.querySelector('.buttons');
   const $show = document.getElementById('show');
   const $dot = document.querySelector('.dot');
+  const $allClear = document.querySelector('.clear');
+  const $delete = document.querySelector('.delete');
 
   // 숫자 버튼 클릭 이벤트 
   $buttons.addEventListener('click', e => {
@@ -68,6 +78,7 @@ function floatDot(dot) {
   $buttons.addEventListener('click', e => {
     if (e.target.matches('.plus') || e.target.matches('.minus') || e.target.matches('.divisor') || e.target.matches('.mul') || e.target.matches('.answer')) {
       calculate(e.target.textContent);
+
     }
 
   });
@@ -75,24 +86,28 @@ function floatDot(dot) {
   //  .(점)버튼 클릭 이벤트
   $dot.addEventListener('click', e => {
     if (e.target.matches('.dot')) {
-      console.log('dot click');
+      console.log('점 클릭!');
       floatDot(e.target.textContent);
 
     }
   })
 
   // AC버튼 클릭 이벤트
-  const $allClear = document.querySelector('.clear');
-  $allClear.addEventListener('click', (e) => {
+  $allClear.addEventListener('click', e => {
+    if (e.target.matches('.clear')) {
     console.log('올클리어 클릭!');
+    allClear();
+
+    }
 
   })
 
 
   // C버튼 클릭 이벤트
-  const $delete = document.querySelector('.delete');
-  $delete.addEventListener('click', (e) => {
+  $delete.addEventListener('click', e => {
     console.log('삭제 클릭!');
+    
+
   })
 
 
@@ -104,6 +119,6 @@ function floatDot(dot) {
 // 점 연속 출현
 
 // 할 것
-// .버튼 클릭 이벤트 ,AC버튼 클릭 이벤트, C버튼 클릭 이벤트 해야함
+// .버튼 클릭 이벤트 , C버튼 클릭 이벤트 해야함
 // ppt
 
